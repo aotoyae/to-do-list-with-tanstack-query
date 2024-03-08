@@ -19,7 +19,7 @@ export function TodoForm() {
     mutationFn: createTodo,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['todos'] });
+      queryClient.invalidateQueries({ queryKey: ['todo'] });
     },
   });
 

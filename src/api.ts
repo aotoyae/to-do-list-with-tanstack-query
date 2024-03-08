@@ -1,9 +1,22 @@
+import axios from 'axios';
+
 // 1번 문제
-export type Todo = {};
+export type Todo = {
+  id: string;
+  title: string;
+  content: string;
+  isDone: boolean;
+  createdAt: Date;
+};
 
 export type Todos = Array<Todo>;
 
 // 2.1번 문제
+
+const getTodos = async () => {
+  const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/todo`);
+  return res.data;
+};
 
 const createTodo = async (todo: Todo): Promise<Todo> => {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/todo`, {
@@ -42,4 +55,4 @@ const deleteTodo = async (todo: Todo): Promise<Todo> => {
   return data;
 };
 
-export { fetchTodo, createTodo, toggleIsDone, deleteTodo };
+export { getTodos, createTodo, toggleIsDone, deleteTodo };
